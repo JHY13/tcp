@@ -1,4 +1,4 @@
-package com.jspprj.web.dao.controller.customer;
+package com.jspprj.web.controller.customer;
 
 import java.util.List;
 import java.io.IOException;
@@ -16,6 +16,36 @@ import com.jspprj.web.dao.mybatis.MyBatisNoticeFileDao;
 import com.jspprj.web.entities.Notice;
 import com.jspprj.web.entities.NoticeFile;
 
+
+
+
+@WebServlet("/customer/notice-detail")
+public class NoticeDetailController extends HttpServlet {
+
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+      
+      String _code = request.getParameter("code");
+
+      NoticeDao noticeDao = new MyBatisNoticeDao();
+      NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();
+
+      Notice notice;
+      List<NoticeFile> noticeFiles;
+      
+      notice = noticeDao.get(_code);
+      noticeFiles = noticeFileDao.getList(_code);
+
+      request.setAttribute("n", notice);
+      request.setAttribute("files", noticeFiles);
+      
+      request.getRequestDispatcher("/WEB-INF/views/customer/notice-detail.jsp").forward(request, reponse);
+
+   }
+}
+
+
+/*
 @WebServlet("/customer/notice-detail")
 public class NoticeDetailController extends HttpServlet{
    
@@ -40,5 +70,5 @@ public class NoticeDetailController extends HttpServlet{
 
       
    }
+   */
 
-}

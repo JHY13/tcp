@@ -132,7 +132,6 @@
 			<c:forEach var="i" begin="0" end="4">
 				<c:if test="${start+i<=end }">
 					<c:if test="${page ==start+i }">
-						<!--empty param.p -null일때 사용-->
 						<li><a href="notice?p=${start+i}&t=${param.t}&q=${param.q}"
 							class="strong">${start+i}</a></li>
 					</c:if>

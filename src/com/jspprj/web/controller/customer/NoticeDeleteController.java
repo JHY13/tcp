@@ -1,4 +1,4 @@
-package com.jspprj.web.dao.controller.customer;
+package com.jspprj.web.controller.customer;
 
 import java.io.IOException;
 
