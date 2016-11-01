@@ -5,7 +5,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -16,67 +16,68 @@
 <title>공지사항</title>
 </head>
 <body>
-   <table border="1">
-      <tbody>
-         <tr>
-            <td>제목</td>
-            <td colspan="3">${n.title}</td>
-         </tr>
-         <tr>
 
-            <td>작성일</td>
-            <td colspan="3"><fmt:formatDate pattern="yyyy-MM-dd"
-                  value="${n.regdate}" /></td>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<table border="1">
+		<tbody>
+			<tr>
+				<td>제목</td>
+				<td colspan="3">${n.title}</td>
+			</tr>
+			<tr>
 
-         </tr>
-         <tr>
-            <td>작성자</td>
-            <td>${n.writer}</td>
-            <td>조회수</td>
-            <td>${n.hit}</td>
-         </tr>
-         <tr>
-            <td>첨부파일</td>
-            <td colspan="3">
-            <!-- var은 pagecontext에 들어감 / varStatus 상태-->
-            <!-- s.first last 처음값만 true, 마지막값만 true-->
-            <c:forEach var="f" items="${files}" varStatus="s">
-               <%-- index : ${s.index} / count : ${s.count} / ${s.first} / ${s.last} <br /> --%>
-               <a href="../download?f=${f.src}">${f.src}</a>
-               <%-- <a href="upload/${f.src}">${f.src}</a> --%>
-               <c:if test="${s.last == false}">
+				<td>작성일</td>
+				<td colspan="3"><fmt:formatDate pattern="yyyy-MM-dd"
+						value="${n.regdate}" /></td>
+
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td>${n.writer}</td>
+				<td>조회수</td>
+				<td>${n.hit}</td>
+			</tr>
+			<tr>
+				<td>첨부파일</td>
+				<td colspan="3">
+					<!-- var은 pagecontext에 들어감 / varStatus 상태--> <!-- s.first last 처음값만 true, 마지막값만 true-->
+					<c:forEach var="f" items="${files}" varStatus="s">
+						<%-- index : ${s.index} / count : ${s.count} / ${s.first} / ${s.last} <br /> --%>
+						<a href="../download?f=${f.src}">${f.src}</a>
+						<%-- <a href="upload/${f.src}">${f.src}</a> --%>
+						<c:if test="${s.last == false}">
                   ,
                </c:if>
-            </c:forEach>
-               </td>
-         </tr>
-         <tr>
-            <td colspan="4">${n.content}</td>
-         </tr>
-      </tbody>
-   </table>
-   
-   <!-- 준모오빠가 주신 코드 16.10.31  -->
-   <div>
-      <c:if test="${empty pn}">
+					</c:forEach>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">${n.content}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- 준모오빠가 주신 코드 16.10.31  -->
+	<div>
+		<c:if test="${empty pn}">
             이전글이 없습니다.
          </c:if>
-      <c:if test="${not empty pn}">
-         <a href="notice-detail?code=${pn.code}">이전글 :${pn.title}</a>
-      </c:if>
-   </div>
-   <div>
-      <a href="notice-detail?code=${nn.code}">다음글 :${nn.title}</a>
-   </div>
-   
-   <!--  -->
-   
+		<c:if test="${not empty pn}">
+			<a href="notice-detail?code=${pn.code}">이전글 :${pn.title}</a>
+		</c:if>
+	</div>
+	<div>
+		<a href="notice-detail?code=${nn.code}">다음글 :${nn.title}</a>
+	</div>
 
-   <div>
-      <a href="notice">목록</a> <a href="notice-edit?code=${n.code}">수정</a>
-      <!-- 하나보낼 때는 get을 많이 씀 -->
-      <a href="notice-del?code=${n.code}">삭제</a>
-   </div>
+	<!--  -->
+
+
+	<div>
+		<a href="notice">목록</a> <a href="notice-edit?code=${n.code}">수정</a>
+		<!-- 하나보낼 때는 get을 많이 씀 -->
+		<a href="notice-del?code=${n.code}">삭제</a>
+	</div>
 
 </body>
 </html>

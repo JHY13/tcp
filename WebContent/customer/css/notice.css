@@ -1,0 +1,219 @@
+@CHARSET "UTF-8";
+@IMPORT url("../../css/reset.css");
+@IMPORT url("../../css/style.css"); /* css 참조하는 방법 */
+
+/* body .hidden{
+   display: none;
+}
+
+body .h-menu > ul > li{
+   float: left;
+}
+
+body .clearfix {
+  overflow: auto;
+  zoom: 1;
+} */
+#member-menu{
+   border: 1px solid red;
+   display: inline-block;
+   font-family: "맑은고딕";
+   font-weight: bold;
+   font-size: 10px;
+}
+
+#member-menu a{	
+   color: #979797;
+   text-decoration: none;  
+}
+#member-menu a:hover{
+	text-decoration: underline;
+}
+
+#member-menu h1{
+   display: none;
+}
+#member-menu ul{
+   overflow: auto;
+}
+#member-menu ul>li{
+   float: left;
+   padding-left: 9px;
+   background: url("../../images/bg-member-menu-sp.png") no-repeat 5px center;  
+}
+#member-menu > ul >li:first-child{ /*li:first-child+ 바로 밑동생 li:first-child~밑에 아래~  */
+   padding-left:0px;
+   background:none; 
+     
+} 
+
+/************************서치 폼******************************/
+#search-form{
+	border:5px solid #8CBA34;	
+	display: inline-block;
+	height:25px;
+	/* vertical-align: middle; */ /*inline에서 자간 없애는 건 폰트사이즈 0  */
+	font_size:0px;
+}
+/*left-top -> position // width, height -> display  */
+#search-form h1,
+#search-form legend{
+	display:none;
+
+}
+
+
+#search-form label{
+	line-height:25px; /*줄높이  */
+	background : white;
+	height:25px;
+	display :block;
+	float : left;
+	font-size: 11px;
+	font-family: "돋움" Arial sans-serif;
+	font-weight:bold;
+	color: #919191;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+	/*패딩과 마진은? 박스의 크기를 변화시킴   들여쓰기 크기 지정하는 게 따로 있음*/
+#search-form input[type=text]{
+	height:25px;
+	border : 0px;
+	display :block;
+	float : left;
+	text-indent: 5px;
+}
+
+#search-form input[type=submit]{
+	background: url("../../images/btn-zoom.png") no-repeat center;
+	width:31px;
+	height: 25px;
+	border: 0px;
+	vertical-align: middle;
+	display :block;
+	float : left;
+	border-left: 1px solid #8cba34;
+	
+	text-indent: -999px;
+}
+
+
+
+
+/* ---------<<level1>>----------------------------------------- */
+#header{
+   height: 80px;
+}
+
+#main-menu{   
+   font-family: "맑은 고딕";
+   font-weight: bold;
+   font-size: 15px;
+   color: #000;
+   
+   display: inline-block;
+}
+
+#main-menu > h1{
+   display: none;
+}
+
+#main-menu > ul{
+   border:1px solid red;
+   overflow: auto;
+}
+
+#main-menu > ul > li{
+   float: left;   
+   padding-left: 24px;
+   background: url("../../images/bg-main-menu-vsp.png") no-repeat 13px center;   
+}
+
+#main-menu > ul > li:first-child{ /*li:first-child+ 바로 밑동생 li:first-child~밑에 아래~  */
+   padding-left:0px;
+   background:none;   
+}
+
+#main-menu a{
+	color : #000;
+	text-decoration: none;
+}
+
+#main-menu a:hover{
+	color: #ff6c70;
+}
+
+#visual{
+   background: #313131 url("../../images/customer/visual.png") no-repeat center;
+   background-size:3000px 171px;
+   height: 171px;
+   border-top:3px solid #8CBA34;   
+   
+}
+
+#body{   
+   min-height: 300px;
+   border-top:5px solid #8CBA34;
+   margin-top:1px;   
+}
+
+#footer{
+   background: #313131;   
+   height: 100px;
+}
+
+/* ---------<level 2>----------------------------- */
+/* #header > div,
+#visual > div,
+#body > div,
+#footer > div{
+   
+} */
+/* 구조변경에 용이한 선택자 */
+.content-container{   
+   height: inherit; /* 100%; */
+   width: 960px;
+   margin:auto;
+   /* margin-left:auto;
+   margin-right: auto; */
+}
+/* ----------<level 3>------------------------------ */
+#aside {
+   min-height: inherit;
+   width: 205px;   
+   float:left;
+   background: url("../../images/bg-aside-title.png") no-repeat;
+}
+
+main {
+   min-height: inherit;
+   width: calc(100% - 205px);/* 755px; */   
+   float:left;
+}
+
+#body > .content-container{
+   background: #313131 url("../../images/bg-body.png") repeat-y center;
+   position: relative;
+}
+
+#customer-menu{
+	display: inline-block;
+}
+
+#customer-menu > ul > li{
+	float:left;
+}
+
+#customer-menu a:hover{
+	opacity: 0.4;
+}
+
+#customer-menu > h1{
+	display: none;
+}
+
+
+
+

@@ -16,6 +16,7 @@
    WHERE NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10;
 
    </select>
+   
    <update id="update" parameterType="com.jspprj.web.entities.Notice">
       UPDATE NOTICES
       SET TITLE=#{title}, CONTENT=#{content}
