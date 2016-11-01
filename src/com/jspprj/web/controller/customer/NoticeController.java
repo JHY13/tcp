@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jspprj.web.dao.NoticeDao;
 import com.jspprj.web.dao.mybatis.MyBatisNoticeDao;
 import com.jspprj.web.model.NoticeModel;
-
+/*/*/
 @WebServlet("/customer/notice")
 public class NoticeController extends HttpServlet {
 
