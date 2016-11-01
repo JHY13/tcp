@@ -20,8 +20,6 @@ public class NoticeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		
-		
 		String p = request.getParameter("p");
 		String t = request.getParameter("t");
 		String q = request.getParameter("q");
@@ -48,9 +46,7 @@ public class NoticeController extends HttpServlet {
 
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
-		
-		
-		
+			
 		//1.그냥부르기: 니가 새로해 
 		//response.sendRedirect("notice.jsp");
 

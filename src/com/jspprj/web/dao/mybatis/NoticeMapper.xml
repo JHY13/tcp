@@ -52,11 +52,11 @@
    
    <!-- 준모 오빠가 주신 코드 16.10.31  -->
    
-    <select id="getPrev" resultType="com.kizmo.web.entities.Notice">
+    <select id="getPrev" resultType="com.jspprj.web.entities.Notice">
    select top 1 * from notices where code &gt; CAST(#{code} as INT) order by regdate asc
    </select>
    
-   <select id="getNext" resultType="com.kizmo.web.entities.Notice">
+   <select id="getNext" resultType="com.jspprj.web.entities.Notice">
    select top 1 * from notices where code &lt; CAST(#{code} as INT) order by regdate desc
    </select>
    <update id="hitUp">
