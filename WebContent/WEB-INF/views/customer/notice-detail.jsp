@@ -55,6 +55,22 @@
          </tr>
       </tbody>
    </table>
+   
+   <!-- 준모오빠가 주신 코드 16.10.31  -->
+   <div>
+      <c:if test="${empty pn}">
+            이전글이 없습니다.
+         </c:if>
+      <c:if test="${not empty pn}">
+         <a href="notice-detail?code=${pn.code}">이전글 :${pn.title}</a>
+      </c:if>
+   </div>
+   <div>
+      <a href="notice-detail?code=${nn.code}">다음글 :${nn.title}</a>
+   </div>
+   
+   <!--  -->
+   
 
    <div>
       <a href="notice">목록</a> <a href="notice-edit?code=${n.code}">수정</a>

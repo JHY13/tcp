@@ -41,18 +41,47 @@ body .clearfix {
 }
 #member-menu > ul >li:first-child{ /*li:first-child+ 바로 밑동생 li:first-child~밑에 아래~  */
    padding-left:0px;
-   background:none;   
+   background:none; 
+     
 } 
 
 /************************서치 폼******************************/
 #search-form{
-	border:5px solid #8CBA34;
-	position: relative;
+	border:5px solid #8CBA34;	
+	display: inline-block;
+	height:25px;
+	/* vertical-align: middle; */ /*inline에서 자간 없애는 건 폰트사이즈 0  */
+	font_size:0px;
 }
-
+/*left-top -> position // width, height -> display  */
 #search-form h1,
 #search-form legend{
 	display:none;
+
+}
+
+
+#search-form label{
+	line-height:25px; /*줄높이  */
+	background : white;
+	height:25px;
+	display :block;
+	float : left;
+	font-size: 11px;
+	font-family: "돋움" Arial sans-serif;
+	font-weight:bold;
+	color: #919191;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+	/*패딩과 마진은? 박스의 크기를 변화시킴   들여쓰기 크기 지정하는 게 따로 있음*/
+#search-form input[type=text]{
+	height:25px;
+	border : 0px;
+	display :block;
+	float : left;
+	text-indent: 5px;
 }
 
 #search-form input[type=submit]{
@@ -60,7 +89,12 @@ body .clearfix {
 	width:31px;
 	height: 25px;
 	border: 0px;
+	vertical-align: middle;
+	display :block;
+	float : left;
+	border-left: 1px solid #8cba34;
 	
+	text-indent: -999px;
 }
 
 
@@ -110,7 +144,7 @@ body .clearfix {
 }
 
 #visual{
-   background: #313131 url("../images/bg-visual.png") no-repeat center;
+  /*  background: #313131 url("../images/bg-visual.png") no-repeat center; */
    /* background-size:3000px 171px; */
    height: 171px;
    border-top:3px solid #8CBA34;   

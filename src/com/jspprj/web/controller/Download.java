@@ -19,7 +19,7 @@ public class Download extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fname = request.getParameter("f");
+		String fname = "end1.png";//request.getParameter("f");
 	      
 	      response.setHeader("Content-Disposition"
 	            , String.format("attatchment; filename=\"%s\"" , fname));

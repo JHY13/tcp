@@ -100,5 +100,49 @@ public class MyBatisNoticeDao implements NoticeDao{
 		session.close();
 		return code;
 	}
+	
+	/* 준모 오빠가 주신 코드 16.10.31 */
+	
+	@Override
+	   public Notice getPrev(String code) {
+	      // TODO Auto-generated method stub
+	      SqlSession session = ssf.openSession(); //
+	      NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+	      
+	      Notice notice =  noticeDao.getPrev(code);
+	      
+	      
+	      
+	      return notice;
+	   }
+
+	   @Override
+	   public Notice getNext(String code) {
+	      // TODO Auto-generated method stub
+	      SqlSession session = ssf.openSession(); //
+	      NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+	         
+	      Notice notice =  noticeDao.getNext(code);
+	      
+	      
+	      
+	      return notice;
+	   }
+
+	   @Override
+	   public int hitUp(String code) {
+	      SqlSession session = ssf.openSession(); //
+	      NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+	      
+	      int result = noticeDao.hitUp(code);
+	      
+	      session.commit();
+	      session.close();
+	      
+	      return result;
+	   }
+	   
+	   
+	 
 
 }
