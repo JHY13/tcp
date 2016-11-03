@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.jspprj.web.dao.NoticeDao;
 import com.jspprj.web.dao.NoticeFileDao;
 import com.jspprj.web.dao.mybatis.MyBatisNoticeDao;
-import com.jspprj.web.dao.mybatis.MyBatisNoticeFileDao;
+//mport com.jspprj.web.dao.mybatis.MyBatisNoticeFileDao;
 import com.jspprj.web.entities.Notice;
-import com.jspprj.web.entities.NoticeFile;
+//import com.jspprj.web.entities.NoticeFile;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -67,18 +67,18 @@ public class NoticeRegController extends HttpServlet {
 		// String f1= req.getParameter("file");
 		// String f3=req.getOriginalFileName("file");
 
-		NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();
+		//NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();
 		
 		int i=1;
 		while(en.hasMoreElements()){
-		NoticeFile nf = new NoticeFile();
+		//NoticeFile nf = new NoticeFile();
 		String name = (String)en.nextElement();
 		System.out.println(i+name);
 		String fname = req.getFilesystemName(name);
 		System.out.println(i+"f: "+fname);
-		nf.setSrc(fname); //경로명은 안 넣는 게 좋음
-		nf.setNoticeCode(noticeDao.getLastCode());
-		noticeFileDao.insert(nf);
+		//nf.setSrc(fname); //경로명은 안 넣는 게 좋음
+		//nf.setNoticeCode(noticeDao.getLastCode());
+		//noticeFileDao.insert(nf);
 		}
 
 

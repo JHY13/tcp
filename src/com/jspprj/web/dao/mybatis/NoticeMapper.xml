@@ -2,15 +2,14 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jspprj.web.dao.NoticeDao">
    <select id="get" resultType="com.jspprj.web.entities.Notice">
-      SELECT * FROM NOTICES WHERE CODE=#{code}
+      SELECT * FROM MOVIE WHERE CODE=#{code}
    </select>
    <select id="getList" resultType="com.jspprj.web.model.NoticeModel">
-      
             
    SELECT * FROM(
    SELECT
-   ROW_NUMBER() OVER(ORDER BY REGDATE DESC) NUM,
-   NOTICES_VIEW.*FROM NOTICES_VIEW
+   ROW_NUMBER() OVER(ORDER BY RELEASEYEAR DESC) NUM,
+   MOVIE.* FROM MOVIE
    WHERE ${param2} LIKE '%${param3}%'
    )N
    WHERE NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10;
@@ -18,34 +17,34 @@
    </select>
    
    <update id="update" parameterType="com.jspprj.web.entities.Notice">
-      UPDATE NOTICES
-      SET TITLE=#{title}, CONTENT=#{content}
+      UPDATE MOVIE
+      SET TITLE=#{title}, SUMMARY=#{content}
       WHERE CODE=#{code}
    </update>
    
    <delete id="delete">
-      DELETE NOTICES WHERE CODE=#{code}
+      DELETE MOVIE WHERE CODE=#{code}
    </delete>
    <insert id="insert">
       <selectKey order="BEFORE" keyProperty="code" resultType="String">
-      SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 AS CODE FROM NOTICES
+      SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 AS CODE FROM MOVIE
 
       </selectKey>
-      INSERT INTO NOTICES(CODE,TITLE,WRITER,CONTENT)
-      VALUES(#{code},#{title},#{writer},#{content})
+      INSERT INTO MOVIE(CODE,TITLE,POSTER,SUMMARY)
+      VALUES(#{code},#{title},#{src},#{content})
    </insert>
    <select id="getCount" resultType="Integer">
    SELECT  COUNT(*)  COUNT FROM
    (
       SELECT
-      ROW_NUMBER() OVER(ORDER BY REGDATE DESC) NUM,
-      NOTICES_VIEW.*FROM NOTICES_VIEW
+      ROW_NUMBER() OVER(ORDER BY RELEASEYEAR DESC) NUM,
+      MOVIE.*FROM MOVIE
       WHERE ${param1} LIKE '%${param2}%'
    )N    
    </select>
    
    <select id="getLastCode" resultType="String">
-   SELECT ISNULL(MAX(CAST(CODE AS INT)),0) AS CODE FROM NOTICES 
+   SELECT ISNULL(MAX(CAST(CODE AS INT)),0) AS CODE FROM MOVIE
    </select>
    
    
@@ -54,14 +53,14 @@
    <!-- 준모 오빠가 주신 코드 16.10.31  -->
    
     <select id="getPrev" resultType="com.jspprj.web.entities.Notice">
-   select top 1 * from notices where code &gt; CAST(#{code} as INT) order by regdate asc
+   select top 1 * from MOVIE where code &gt; CAST(#{code} as INT) order by RELEASEYEAR asc
    </select>
    
    <select id="getNext" resultType="com.jspprj.web.entities.Notice">
-   select top 1 * from notices where code &lt; CAST(#{code} as INT) order by regdate desc
+   select top 1 * from MOVIE where code &lt; CAST(#{code} as INT) order by RELEASEYEAR desc
    </select>
    <update id="hitUp">
-   update notices set hit = hit + 1 where code = #{code}
+   update MOVIE set hit = hit + 1 where code = #{code}
    </update>
    
 </mapper>

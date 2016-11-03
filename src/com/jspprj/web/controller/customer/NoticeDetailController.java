@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jspprj.web.dao.NoticeDao;
 import com.jspprj.web.dao.NoticeFileDao;
 import com.jspprj.web.dao.mybatis.MyBatisNoticeDao;
-import com.jspprj.web.dao.mybatis.MyBatisNoticeFileDao;
+//import com.jspprj.web.dao.mybatis.MyBatisNoticeFileDao;
 import com.jspprj.web.entities.Notice;
 import com.jspprj.web.entities.NoticeFile;
 
@@ -21,31 +21,32 @@ import com.jspprj.web.entities.NoticeFile;
 
 public class NoticeDetailController extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String _code = request.getParameter("code");
+		System.out.println(_code);
 
-		NoticeDao noticeDao = new MyBatisNoticeDao(); //DAO:data access object 즉 data service 하는 클래스를 분리해서 재사용하도록.
+		NoticeDao noticeDao;  //DAO:data access object 즉 data service 하는 클래스를 분리해서 재사용하도록.
 		Notice notice;
+		noticeDao = new MyBatisNoticeDao();
 
-		NoticeFileDao fdao = new MyBatisNoticeFileDao();
-		List<NoticeFile> noticeFiles;
+	//	NoticeFileDao fdao = new MyBatisNoticeFileDao();
+		//List<NoticeFile> noticeFiles;
 
 		try {
 
 			notice = noticeDao.get(_code);
-			noticeFiles = fdao.getList(_code);
+		//	noticeFiles = fdao.getList(_code);
 			//Notice notice = dao.get("31");
-			noticeDao.hitUp(_code);
+			//noticeDao.hitUp(_code);
 			
 			request.setAttribute("n", notice);
 			request.setAttribute("pn", noticeDao.getPrev(_code));
 			request.setAttribute("nn", noticeDao.getNext(_code));
-			request.setAttribute("files",noticeFiles);
+		//	request.setAttribute("files",noticeFiles);
 
-			String date = notice.getRegdate().toString();
-			request.setAttribute("date",date);
+			/*String date = notice.getRegdate().toString();
+			request.setAttribute("date",date);*/
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

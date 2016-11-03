@@ -1,4 +1,4 @@
-package com.jspprj.web.dao.mybatis;
+/*package com.jspprj.web.dao.mybatis;
 
 import java.util.List;
 
@@ -57,3 +57,4 @@ public class MyBatisNoticeFileDao implements NoticeFileDao {
 	}
 
 }
+*/
